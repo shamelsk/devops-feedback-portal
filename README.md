@@ -28,9 +28,11 @@ Built as part of hands-on DevOps learning and containerization practice.
 * MySQL database integration
 * Dockerized deployment
 * Docker Compose orchestration
+* Multi-Stage Docker Build for optimized container images
 * Persistent storage using Docker Volumes
 * Container networking
 * Application health checks
+* Service dependency management
 * Responsive user interface
 
 ---
@@ -63,6 +65,7 @@ Built as part of hands-on DevOps learning and containerization practice.
 devops-feedback-portal/
 ├── app.py
 ├── Dockerfile
+├── Dockerfile-multistage
 ├── docker-compose.yml
 ├── requirements.txt
 ├── message.sql

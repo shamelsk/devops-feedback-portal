@@ -23,6 +23,7 @@ services:
   flask-app:
     build:
       context: .
+      dockerfile: ./Dockerfile-multistage
     container_name: flask-app
     ports:
       - "5000:5000"
