@@ -2,34 +2,28 @@
 
 A containerized two-tier web application built using Flask, MySQL, Docker, and Docker Compose.
 
-This project demonstrates real-world DevOps concepts such as containerization, multi-container applications, persistent storage, container networking, and health monitoring.
+The application allows users to submit feedback through a web interface and stores it in a MySQL database. The project demonstrates containerized application deployment, persistent storage, service networking, and health monitoring using Docker.
+
+Built as part of hands-on DevOps learning and containerization practice.
 
 ---
 
-# Architecture
+## Tech Stack
 
-```text
-+------------------+
-|      User        |
-+--------+---------+
-         |
-         v
-+------------------+
-|    Flask App     |
-| (Frontend/API)   |
-+--------+---------+
-         |
-         v
-+------------------+
-|      MySQL       |
-|    Database      |
-+------------------+
-```
+| Component        | Technology     |
+| ---------------- | -------------- |
+| Backend          | Flask          |
+| Database         | MySQL 5.7      |
+| Language         | Python 3.9     |
+| Containerization | Docker         |
+| Orchestration    | Docker Compose |
+| Frontend         | HTML, CSS      |
 
 ---
 
-# Features
+## Features
 
+* Two-tier architecture
 * Flask web application
 * MySQL database integration
 * Dockerized deployment
@@ -38,97 +32,85 @@ This project demonstrates real-world DevOps concepts such as containerization, m
 * Container networking
 * Application health checks
 * Responsive user interface
-* Two-tier architecture implementation
 
 ---
 
-# Technology Stack
+## Architecture
 
-| Technology     | Purpose                    |
-| -------------- | -------------------------- |
-| Python         | Backend Development        |
-| Flask          | Web Framework              |
-| MySQL          | Database                   |
-| Docker         | Containerization           |
-| Docker Compose | Multi-Container Management |
-| HTML           | Frontend Structure         |
-| CSS            | Frontend Styling           |
+```text
++-------------+
+|    User     |
++------+------+
+       |
+       v
++-------------------+
+|    Flask App      |
+|  Frontend + API   |
++---------+---------+
+          |
+          v
++-------------------+
+|      MySQL        |
+|     Database      |
++-------------------+
+```
 
 ---
 
-# Project Structure
+## Project Structure
 
 ```text
 devops-feedback-portal/
-│
 ├── app.py
 ├── Dockerfile
 ├── docker-compose.yml
 ├── requirements.txt
-├── README.md
 ├── message.sql
-│
+├── README.md
 ├── templates/
 │   └── index.html
-│
 └── static/
     └── style.css
 ```
 
 ---
 
-# Prerequisites
+## Prerequisites
 
-Before running the project, install the following:
+Install the following software before running the application:
 
-## 1. Install Git
+### Git
 
-### Ubuntu
+Ubuntu:
 
 ```bash
 sudo apt update
 sudo apt install git -y
 ```
 
-### Verify Installation
+Verify:
 
 ```bash
 git --version
 ```
 
----
+### Docker
 
-## 2. Install Docker
-
-### Ubuntu
+Ubuntu:
 
 ```bash
-sudo apt update
-
 curl -fsSL https://get.docker.com -o get-docker.sh
 
 sudo sh get-docker.sh
 ```
 
-### Add Current User to Docker Group
-
-```bash
-sudo usermod -aG docker $USER
-```
-
-Logout and login again.
-
-### Verify Installation
+Verify:
 
 ```bash
 docker --version
 ```
 
----
-
-## 3. Install Docker Compose
-
-Most modern Docker installations include Docker Compose.
+### Docker Compose
 
 Verify:
 
@@ -139,20 +121,14 @@ docker compose version
 If not installed:
 
 ```bash
-sudo apt update
-
 sudo apt install docker-compose-plugin -y
-```
-
-Verify again:
-
-```bash
-docker compose version
 ```
 
 ---
 
-# Clone Repository
+## Quick Start
+
+### Clone Repository
 
 ```bash
 git clone https://github.com/shamelsk/devops-feedback-portal.git
@@ -160,25 +136,19 @@ git clone https://github.com/shamelsk/devops-feedback-portal.git
 cd devops-feedback-portal
 ```
 
----
-
-# Build and Run the Application
-
-Build and start all containers:
+### Build and Run
 
 ```bash
 docker compose up --build -d
 ```
 
----
-
-# Verify Running Containers
+### Verify Containers
 
 ```bash
 docker ps
 ```
 
-Expected output:
+Expected containers:
 
 ```text
 mysql
@@ -187,9 +157,9 @@ flask-app
 
 ---
 
-# Access the Application
+## Access Application
 
-Open your browser:
+Open:
 
 ```text
 http://localhost:5000
@@ -203,15 +173,23 @@ http://<server-ip>:5000
 
 ---
 
-# Application Health Check
+## Health Check
 
-Verify application health:
+The application exposes a health endpoint used for monitoring container health.
+
+### Endpoint
+
+```text
+/health
+```
+
+### Test
 
 ```bash
 curl http://localhost:5000/health
 ```
 
-Expected output:
+Expected Response:
 
 ```text
 Application Healthy
@@ -219,76 +197,41 @@ Application Healthy
 
 ---
 
-# View Container Logs
+## Docker Components
 
-View all logs:
-
-```bash
-docker compose logs
-```
-
-Follow logs in real-time:
-
-```bash
-docker compose logs -f
-```
-
----
-
-# Useful Docker Commands
-
-## Stop Containers
-
-```bash
-docker compose down
-```
-
-## Restart Containers
-
-```bash
-docker compose restart
-```
-
-## Rebuild Application
-
-```bash
-docker compose build --no-cache
-
-docker compose up -d
-```
-
-## Remove Containers and Volumes
-
-```bash
-docker compose down -v
-```
-
----
-
-# Docker Components
-
-## Flask Container
+### Flask Container
 
 Responsibilities:
 
 * Handle user requests
-* Render frontend pages
 * Process feedback submissions
+* Render frontend pages
 * Communicate with MySQL
 
-## MySQL Container
+### MySQL Container
 
 Responsibilities:
 
-* Store feedback records
-* Provide persistent data storage
+* Store application data
+* Persist records using Docker Volumes
 * Serve database queries
 
 ---
 
-# Networking
+## Persistent Storage
 
-Docker Compose automatically creates an isolated network that allows containers to communicate securely.
+The MySQL database uses Docker Volumes to preserve data across container restarts.
+
+```yaml
+volumes:
+  mysql-data:
+```
+
+---
+
+## Networking
+
+Docker Compose automatically creates an isolated network allowing communication between containers.
 
 The Flask application connects to MySQL using:
 
@@ -298,20 +241,43 @@ MYSQL_HOST=mysql
 
 ---
 
-# Persistent Storage
+## Useful Commands
 
-Database persistence is provided through Docker Volumes.
+### View Running Containers
 
-```yaml
-volumes:
-  mysql-data:
+```bash
+docker ps
 ```
 
-This ensures that data remains available even after container restarts.
+### View Logs
+
+```bash
+docker compose logs -f
+```
+
+### Stop Application
+
+```bash
+docker compose down
+```
+
+### Rebuild Application
+
+```bash
+docker compose build --no-cache
+
+docker compose up -d
+```
+
+### Remove Containers and Volumes
+
+```bash
+docker compose down -v
+```
 
 ---
 
-# DevOps Concepts Demonstrated
+## DevOps Concepts Demonstrated
 
 * Docker Image Creation
 * Multi-Container Applications
@@ -320,15 +286,15 @@ This ensures that data remains available even after container restarts.
 * Persistent Volumes
 * Health Checks
 * Service Dependency Management
-* Flask and MySQL Integration
+* Flask–MySQL Integration
 * Infrastructure Troubleshooting
-* Two-Tier Architecture
+* Two-Tier Application Deployment
 
 ---
 
-# Author
+## Author
 
-Shamel Khan
+**Shamel Khan**
 
 GitHub: https://github.com/shamelsk
 
