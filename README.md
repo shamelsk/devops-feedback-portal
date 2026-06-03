@@ -38,11 +38,11 @@ Built as part of hands-on DevOps learning and containerization practice.
 ## Architecture
 
 ```text
-+-------------+
-|    User     |
-+------+------+
-       |
-       v
+   +-------------+
+   |    User     |
+   +------+------+
+          |
+          v
 +-------------------+
 |    Flask App      |
 |  Frontend + API   |
