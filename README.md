@@ -1,97 +1,97 @@
-# íº DevOps Feedback Portal
+# DevOps Feedback Portal
 
-A containerized two-tier web application built using **Flask**, **MySQL**, **Docker**, and **Docker Compose**. This project demonstrates the deployment and management of a multi-container application following DevOps best practices such as container networking, persistent storage, and health monitoring.
+## Overview
 
----
+DevOps Feedback Portal is a containerized two-tier web application built using Flask, MySQL, Docker, and Docker Compose.
 
-## í³ Overview
+The application allows users to submit feedback through a web interface. Submitted feedback is stored in a MySQL database and displayed dynamically on the application dashboard.
 
-DevOps Feedback Portal is a simple web application that allows users to submit feedback through a modern web interface. The feedback is stored in a MySQL database and displayed dynamically on the application dashboard.
-
-The project is designed to showcase practical DevOps concepts including:
-
-* Containerization using Docker
-* Multi-container orchestration using Docker Compose
-* Persistent storage with Docker Volumes
-* Service-to-service communication using Docker Networks
-* Application Health Checks
-* Flask and MySQL integration
+This project demonstrates core DevOps concepts including containerization, multi-container deployments, persistent storage, health checks, and container networking.
 
 ---
 
-## í¿ï¸ Architecture
+## Architecture
 
 ```text
-                +------------------+
-                |      User        |
-                +--------+---------+
-                         |
-                         v
-                +------------------+
-                |   Flask App      |
-                |   (Frontend +    |
-                |    Backend)      |
-                +--------+---------+
-                         |
-                         v
-                +------------------+
-                |      MySQL       |
-                |     Database     |
-                +------------------+
++------------------+
+|      User        |
++--------+---------+
+         |
+         v
++------------------+
+|    Flask App     |
+| (Frontend + API) |
++--------+---------+
+         |
+         v
++------------------+
+|      MySQL       |
+|    Database      |
++------------------+
 ```
 
 ---
 
-## í» ï¸ Technology Stack
+## Technology Stack
 
-| Technology     | Purpose                 |
-| -------------- | ----------------------- |
-| Python         | Application Development |
-| Flask          | Web Framework           |
-| MySQL          | Database                |
-| Docker         | Containerization        |
-| Docker Compose | Container Orchestration |
-| HTML/CSS       | User Interface          |
+| Technology     | Purpose                       |
+| -------------- | ----------------------------- |
+| Python         | Backend Development           |
+| Flask          | Web Framework                 |
+| MySQL          | Database                      |
+| Docker         | Containerization              |
+| Docker Compose | Multi-Container Orchestration |
+| HTML           | Frontend Structure            |
+| CSS            | Frontend Styling              |
 
 ---
 
-## â¨ Features
+## Features
 
-* Modern DevOps-themed user interface
-* Submit and store feedback messages
-* Display stored feedback dynamically
-* MySQL database integration
+* Two-tier application architecture
+* Flask backend integration
+* MySQL database connectivity
 * Dockerized deployment
-* Health monitoring endpoint
-* Persistent database storage
+* Docker Compose orchestration
+* Persistent database storage using Docker Volumes
 * Container networking
-* Two-tier architecture implementation
+* Application health monitoring
+* Modern responsive user interface
 
 ---
 
-## í³ Project Structure
+## Project Structure
 
 ```text
 devops-feedback-portal/
-â
-âââ app.py
-âââ Dockerfile
-âââ docker-compose.yml
-âââ requirements.txt
-âââ README.md
-â
-âââ templates/
-â   âââ index.html
-â
-âââ static/
-â   âââ style.css
-â
-âââ message.sql
+│
+├── app.py
+├── Dockerfile
+├── docker-compose.yml
+├── requirements.txt
+├── README.md
+├── message.sql
+│
+├── templates/
+│   └── index.html
+│
+└── static/
+    └── style.css
 ```
 
 ---
 
-## íº Getting Started
+## Prerequisites
+
+Before running the application, ensure the following tools are installed:
+
+* Docker
+* Docker Compose
+* Git
+
+---
+
+## Installation
 
 ### Clone the Repository
 
@@ -101,7 +101,7 @@ git clone https://github.com/shamelsk/devops-feedback-portal.git
 cd devops-feedback-portal
 ```
 
-### Build and Start the Application
+### Build and Start Containers
 
 ```bash
 docker compose up --build -d
@@ -113,18 +113,18 @@ docker compose up --build -d
 docker ps
 ```
 
-Expected output:
+Expected containers:
 
 ```text
-mysql       Up (healthy)
-flask-app   Up (healthy)
+mysql
+flask-app
 ```
 
 ---
 
-## í¼ Access the Application
+## Access the Application
 
-Open your browser and visit:
+Open a browser and navigate to:
 
 ```text
 http://localhost:5000
@@ -138,21 +138,21 @@ http://<server-ip>:5000
 
 ---
 
-## í¹º Health Check
+## Health Check
 
-The application provides a health monitoring endpoint:
+The application exposes a health endpoint:
 
 ```text
 /health
 ```
 
-Example:
+Test the endpoint:
 
 ```bash
 curl http://localhost:5000/health
 ```
 
-Response:
+Expected response:
 
 ```text
 Application Healthy
@@ -160,29 +160,30 @@ Application Healthy
 
 ---
 
-## í²¾ Persistent Storage
+## Docker Components
 
-The MySQL container uses Docker Volumes to ensure data persistence.
+### Flask Container
 
-```yaml
-volumes:
-  mysql-data:
-```
+Responsible for:
 
-Database records remain available even after container restarts.
+* Handling user requests
+* Rendering web pages
+* Connecting to MySQL
+* Processing feedback submissions
+
+### MySQL Container
+
+Responsible for:
+
+* Storing application data
+* Maintaining persistent records
+* Serving database queries
 
 ---
 
-## í´ Container Networking
+## Networking
 
-Docker Compose automatically creates an isolated network for service communication.
-
-```yaml
-networks:
-  twotier:
-```
-
-The Flask application communicates with MySQL using the service name as the host:
+Docker Compose creates an isolated network allowing the Flask application to communicate with MySQL using the service name:
 
 ```python
 MYSQL_HOST=mysql
@@ -190,7 +191,20 @@ MYSQL_HOST=mysql
 
 ---
 
-## í´§ Useful Commands
+## Persistent Storage
+
+Database persistence is achieved using Docker Volumes:
+
+```yaml
+volumes:
+  mysql-data:
+```
+
+This ensures that database records remain available even after container restarts.
+
+---
+
+## Useful Commands
 
 ### View Running Containers
 
@@ -198,7 +212,7 @@ MYSQL_HOST=mysql
 docker ps
 ```
 
-### View Application Logs
+### View Logs
 
 ```bash
 docker compose logs -f
@@ -225,42 +239,26 @@ docker compose down -v
 
 ---
 
-## í³ DevOps Concepts Demonstrated
+## DevOps Concepts Demonstrated
 
 * Docker Image Creation
-* Docker Compose Orchestration
+* Container Lifecycle Management
+* Docker Compose
 * Multi-Container Applications
-* Container Networking
 * Persistent Volumes
-* Application Health Checks
+* Container Networking
+* Health Checks
 * Service Dependency Management
-* FlaskâMySQL Integration
-* Container Troubleshooting
-* Two-Tier Application Deployment
+* Flask and MySQL Integration
+* Infrastructure Troubleshooting
 
 ---
 
-## í³¸ Application Preview
+## Author
 
-Add a screenshot of the application here after deployment.
-
-```text
-screenshots/app-homepage.png
-```
-
----
-
-## í±¨âí²» Author
-
-**Shamel Khan**
+Shamel Khan
 
 GitHub: https://github.com/shamelsk
 
-Aspiring DevOps Engineer passionate about Cloud, Containers, Automation, and Infrastructure Technologies.
-
----
-
-## í³ License
-
-This project is open-source and available for learning, educational, and portfolio purposes.
+DevOps and Cloud Computing Enthusiast
 
