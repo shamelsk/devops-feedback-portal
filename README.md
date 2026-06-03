@@ -1,10 +1,10 @@
-# ��� DevOps Feedback Portal
+# íº DevOps Feedback Portal
 
 A containerized two-tier web application built using **Flask**, **MySQL**, **Docker**, and **Docker Compose**. This project demonstrates the deployment and management of a multi-container application following DevOps best practices such as container networking, persistent storage, and health monitoring.
 
 ---
 
-## ��� Overview
+## í³ Overview
 
 DevOps Feedback Portal is a simple web application that allows users to submit feedback through a modern web interface. The feedback is stored in a MySQL database and displayed dynamically on the application dashboard.
 
@@ -19,7 +19,7 @@ The project is designed to showcase practical DevOps concepts including:
 
 ---
 
-## ���️ Architecture
+## í¿ï¸ Architecture
 
 ```text
                 +------------------+
@@ -42,7 +42,7 @@ The project is designed to showcase practical DevOps concepts including:
 
 ---
 
-## ���️ Technology Stack
+## í» ï¸ Technology Stack
 
 | Technology     | Purpose                 |
 | -------------- | ----------------------- |
@@ -55,7 +55,7 @@ The project is designed to showcase practical DevOps concepts including:
 
 ---
 
-## ✨ Features
+## â¨ Features
 
 * Modern DevOps-themed user interface
 * Submit and store feedback messages
@@ -69,29 +69,29 @@ The project is designed to showcase practical DevOps concepts including:
 
 ---
 
-## ��� Project Structure
+## í³ Project Structure
 
 ```text
 devops-feedback-portal/
-│
-├── app.py
-├── Dockerfile
-├── docker-compose.yml
-├── requirements.txt
-├── README.md
-│
-├── templates/
-│   └── index.html
-│
-├── static/
-│   └── style.css
-│
-└── message.sql
+â
+âââ app.py
+âââ Dockerfile
+âââ docker-compose.yml
+âââ requirements.txt
+âââ README.md
+â
+âââ templates/
+â   âââ index.html
+â
+âââ static/
+â   âââ style.css
+â
+âââ message.sql
 ```
 
 ---
 
-## ��� Getting Started
+## íº Getting Started
 
 ### Clone the Repository
 
@@ -122,7 +122,7 @@ flask-app   Up (healthy)
 
 ---
 
-## ��� Access the Application
+## í¼ Access the Application
 
 Open your browser and visit:
 
@@ -138,7 +138,7 @@ http://<server-ip>:5000
 
 ---
 
-## ��� Health Check
+## í¹º Health Check
 
 The application provides a health monitoring endpoint:
 
@@ -160,7 +160,7 @@ Application Healthy
 
 ---
 
-## ��� Persistent Storage
+## í²¾ Persistent Storage
 
 The MySQL container uses Docker Volumes to ensure data persistence.
 
@@ -173,7 +173,7 @@ Database records remain available even after container restarts.
 
 ---
 
-## ��� Container Networking
+## í´ Container Networking
 
 Docker Compose automatically creates an isolated network for service communication.
 
@@ -190,7 +190,7 @@ MYSQL_HOST=mysql
 
 ---
 
-## ��� Useful Commands
+## í´§ Useful Commands
 
 ### View Running Containers
 
@@ -225,7 +225,7 @@ docker compose down -v
 
 ---
 
-## ��� DevOps Concepts Demonstrated
+## í³ DevOps Concepts Demonstrated
 
 * Docker Image Creation
 * Docker Compose Orchestration
@@ -234,13 +234,13 @@ docker compose down -v
 * Persistent Volumes
 * Application Health Checks
 * Service Dependency Management
-* Flask–MySQL Integration
+* FlaskâMySQL Integration
 * Container Troubleshooting
 * Two-Tier Application Deployment
 
 ---
 
-## ��� Application Preview
+## í³¸ Application Preview
 
 Add a screenshot of the application here after deployment.
 
@@ -250,7 +250,7 @@ screenshots/app-homepage.png
 
 ---
 
-## ���‍��� Author
+## í±¨âí²» Author
 
 **Shamel Khan**
 
@@ -260,7 +260,7 @@ Aspiring DevOps Engineer passionate about Cloud, Containers, Automation, and Inf
 
 ---
 
-## ��� License
+## í³ License
 
 This project is open-source and available for learning, educational, and portfolio purposes.
 
