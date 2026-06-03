@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Feedback Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+	    <h1> DevOps Feedback Portal</h1>
+        <p>
+            Containerized Flask Application powered by Docker, MySQL & DevOps Best Practices
+        </p>
+    </header>
+
+    <section class="tech-stack">
+        <div class="tech-card">
+            <h3>Docker</h3>
+            <span>Containerized</span>
+        </div>
+
+        <div class="tech-card">
+            <h3>Flask</h3>
+            <span>Python Backend</span>
+        </div>
+
+        <div class="tech-card">
+            <h3>MySQL</h3>
+            <span>Persistent Storage</span>
+        </div>
+    </section>
+
+    <section class="feedback-form">
+
+        <h2>Submit Feedback</h2>
+
+        <form action="/submit" method="POST">
+
+            <input
+                type="text"
+                name="new_message"
+                placeholder="Enter deployment feedback..."
+                required>
+
+            <button type="submit">
+                Submit Feedback
+            </button>
+
+        </form>
+
+    </section>
+
+    <section class="feedback-list">
+
+        <h2>Deployment Feedback</h2>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="feedback-card">
+                    <p>{{ message[0] }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="empty-state">
+                No feedback submitted yet.
+            </div>
+        {% endif %}
+
+    </section>
+
+</div>
+
+</body>
+</html>
+

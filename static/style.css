@@ -1,0 +1,119 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI, sans-serif;
+}
+
+body{
+    background:#0f172a;
+    color:white;
+    min-height:100vh;
+    padding:40px 20px;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+}
+
+header{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+header h1{
+    font-size:3rem;
+    margin-bottom:10px;
+}
+
+header p{
+    color:#94a3b8;
+}
+
+.tech-stack{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-bottom:40px;
+}
+
+.tech-card{
+    background:#1e293b;
+    padding:25px;
+    border-radius:12px;
+    text-align:center;
+    border:1px solid #334155;
+}
+
+.tech-card h3{
+    color:#38bdf8;
+    margin-bottom:10px;
+}
+
+.feedback-form{
+    background:#1e293b;
+    padding:30px;
+    border-radius:12px;
+    margin-bottom:40px;
+    border:1px solid #334155;
+}
+
+.feedback-form h2{
+    margin-bottom:20px;
+}
+
+form{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+input{
+    flex:1;
+    min-width:250px;
+    padding:14px;
+    border:none;
+    border-radius:8px;
+    outline:none;
+    font-size:16px;
+}
+
+button{
+    background:#0ea5e9;
+    color:white;
+    border:none;
+    padding:14px 25px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+button:hover{
+    background:#0284c7;
+}
+
+.feedback-list h2{
+    margin-bottom:20px;
+}
+
+.feedback-card{
+    background:#1e293b;
+    padding:18px;
+    border-radius:10px;
+    margin-bottom:15px;
+    border-left:5px solid #38bdf8;
+}
+
+.feedback-card p{
+    color:#e2e8f0;
+}
+
+.empty-state{
+    background:#1e293b;
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
+    color:#94a3b8;
+}
+
