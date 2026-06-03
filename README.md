@@ -102,9 +102,7 @@ git --version
 Ubuntu:
 
 ```bash
-curl -fsSL https://get.docker.com -o get-docker.sh
-
-sudo sh get-docker.sh
+sudo apt-get install docker.io
 ```
 
 Verify:
@@ -124,7 +122,7 @@ docker compose version
 If not installed:
 
 ```bash
-sudo apt install docker-compose-plugin -y
+sudo apt install docker-compose-v2 -y
 ```
 
 ---
