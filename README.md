@@ -139,7 +139,7 @@ cd devops-feedback-portal
 ### Build and Run
 
 ```bash
-docker compose up --build -d
+docker compose up -d
 ```
 
 ### Verify Containers
